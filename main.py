@@ -4,7 +4,7 @@ import uvicorn
 from pydantic import BaseModel
 from starlette.requests import Request
 
-app = FastAPI()
+app = FastAPI(title="First project", version="0.0.1")
 
 
 # a response custom type
@@ -26,4 +26,4 @@ async def index(request: Request, slug: str, q: Optional[str]) -> Response:
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
