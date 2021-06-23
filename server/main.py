@@ -7,7 +7,7 @@ import time
 from fastapi.middleware.cors import CORSMiddleware
 
 
-app = FastAPI(title="First project", version="0.0.1")
+app = FastAPI(title="Vuetube", version="0.0.1")
 
 origins = [
     "http://localhost:8081",
