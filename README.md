@@ -1,2 +1,6 @@
-# FastApi-first
-Having a first look at FastApi. Seems freakn exciting
+# Vuetube
+
+Vuetube is a simple Youtube video downloader.
+
+- Python (Fastapi, Pytube)
+- Vue.js
