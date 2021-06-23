@@ -1,4 +1,3 @@
-from typing import Optional
 from fastapi import FastAPI
 import uvicorn
 from starlette.requests import Request
@@ -27,24 +26,24 @@ async def home(request: Request):
 
 @app.get('/find/')
 async def index(url: str):
-    yt = YouTube(url)
-    if yt:
-        videos = yt.streams.filter(progressive=True);
+    if url and 'youtube' in url:
+        video_stream = YouTube(url)
+        videos = video_stream.streams.filter(progressive=True)
         return {
-            "info":{
-                'title':yt.title,
-                'author':yt.author,
-                'thumbnail':yt.thumbnail_url,
-                'description':yt.description,
-                'duration':time.strftime('%H:%M:%S',time.gmtime(yt.length)),
-                'views_count':yt.views,
-                'published_date':yt.publish_date,
+            'info':{
+                'title': video_stream.title,
+                'author': video_stream.author,
+                'thumbnail': video_stream.thumbnail_url,
+                'description': video_stream.description,
+                'duration': time.strftime('%H:%M:%S',time.gmtime(video_stream.length)),
+                'views_count': video_stream.views,
+                'published_date': video_stream.publish_date,
                 'download_options': [{'url':video.url,'quality':video.resolution} for video in videos]
              }   
         }
     return {
         'info':{
-            'message':'Video data not found'
+            'error':'Enter a proper url'
         }
     }
 
